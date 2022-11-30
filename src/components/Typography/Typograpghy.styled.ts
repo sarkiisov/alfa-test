@@ -5,12 +5,12 @@ export type DynamicComponentProps = Pick<TypographyProps, 'variant'>;
 
 export const DynamicComponent = styled.div<DynamicComponentProps>`
   ${(props) => props.variant === 'h2' && css`
-    font-size: ${props.theme.fontSizes.medium};
+    font-size: ${props.theme.fontSizes.large};
     font-weight: 700;
     color ${props.theme.colors.black};
   `}
   ${(props) => props.variant === 'h3' && css`
-    font-size: ${props.theme.fontSizes.small};
+    font-size: ${props.theme.fontSizes.medium};
     font-weight: 700;
     color ${props.theme.colors.black};
   `}
