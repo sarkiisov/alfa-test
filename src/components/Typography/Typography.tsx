@@ -10,11 +10,11 @@ export const TypographyTagsMapping = {
 
 export type TypographyProps = {
   className?: string;
-  variant: keyof typeof TypographyTagsMapping;
+  variant?: keyof typeof TypographyTagsMapping;
   children: React.ReactNode;
 };
 
-export const Typography: React.FC<TypographyProps> = ({ className, variant, children }) => (
+export const Typography: React.FC<TypographyProps> = ({ className, variant = 'h2', children }) => (
   <DynamicComponent
     as={TypographyTagsMapping[variant] as keyof JSX.IntrinsicElements}
     variant={variant}
