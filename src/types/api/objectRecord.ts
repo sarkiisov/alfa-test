@@ -1,7 +1,7 @@
 export type ObjectRecord = {
   objectID: number;
   title: string;
-  primaryImage: string;
+  primaryImageSmall: string;
   artistDisplayName: string;
   artistDisplayBio: string;
 };

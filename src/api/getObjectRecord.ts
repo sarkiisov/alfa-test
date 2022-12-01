@@ -5,7 +5,7 @@ export const getObjectRecord = async (objectId: number): Promise<ObjectRecord> =
   const data = await fetch(url).then((response) => response.json()).then((body) => ({
     objectID: body.objectID,
     title: body.title,
-    primaryImage: body.primaryImage,
+    primaryImageSmall: body.primaryImageSmall,
     artistDisplayName: body.artistDisplayName,
     artistDisplayBio: body.artistDisplayBio,
   }));
