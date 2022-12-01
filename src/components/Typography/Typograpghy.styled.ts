@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { TypographyProps } from './Typography';
 
-export const DynamicComponent = styled.div<
+export const DynamicTypography = styled.div<
 Pick<TypographyProps, 'variant'>
 >`
   ${({ theme, variant }) => variant === 'h2' && css`

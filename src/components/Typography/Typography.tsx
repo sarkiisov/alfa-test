@@ -1,5 +1,5 @@
 import React from 'react';
-import { DynamicComponent } from './Typograpghy.styled';
+import { DynamicTypography } from './Typograpghy.styled';
 
 export const TypographyTagsMapping = {
   h2: 'h2',
@@ -15,11 +15,11 @@ export type TypographyProps = {
 };
 
 export const Typography: React.FC<TypographyProps> = ({ className, variant = 'h2', children }) => (
-  <DynamicComponent
+  <DynamicTypography
     as={TypographyTagsMapping[variant] as keyof JSX.IntrinsicElements}
     variant={variant}
     className={className}
   >
     {children}
-  </DynamicComponent>
+  </DynamicTypography>
 );
