@@ -1,2 +1,1 @@
-export * from './getObjectList';
-export * from './getObjectRecord';
+export * from './objectRequests';
