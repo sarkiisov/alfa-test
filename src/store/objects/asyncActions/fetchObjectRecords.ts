@@ -2,6 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../configureStore';
 import { objectRequests } from '../../../api/objectRequests';
 import { ObjectRecord } from '../../../types';
+import { setApiFetching } from '../reducer';
 
 type Payload = {
   recordAmount: number;
@@ -13,20 +14,22 @@ const defaultPayload = {
 
 export const fetchObjectRecords = createAsyncThunk<ObjectRecord[], Payload | void, { state: RootState }>(
   'objects/fetchObjectRecords',
-  async (payload, { getState }) => {
+  async (payload, { getState, dispatch }) => {
+    dispatch(setApiFetching(true));
     const { objects } = getState();
     const queryIds = objects.ids.slice(objects.objects.length, objects.objects.length + (payload ? payload.recordAmount : defaultPayload.recordsAmount));
     const rawData = await Promise.all([...queryIds.map((id: number) => objectRequests.getObjectRecord(id))]);
     const mappedData = rawData.map(({
-      objectId, title, primaryImageSmall, artistDisplayName, artistDisplayBio
+      objectID, title, primaryImageSmall, artistDisplayName, artistDisplayBio
     }) => ({
       isLiked: false,
-      id: objectId,
+      id: objectID,
       title,
       primaryImageSmall,
       artistDisplayName,
       artistDisplayBio,
     })) as ObjectRecord[];
+    dispatch(setApiFetching(false));
     return mappedData;
   }
 );

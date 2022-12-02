@@ -1,10 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { objectRequests } from '../../../api/objectRequests';
+import { setIdsArrLoaded } from '../reducer';
 
-export const fetchObjectIds = createAsyncThunk<number[]>(
+export const fetchObjectIds = createAsyncThunk<number[], void>(
   'objects/fetchObjectIds',
-  async () => {
+  async (_, { dispatch }) => {
     const data = await objectRequests.getObjectIds();
-    return data.objectIDs;
+    dispatch(setIdsArrLoaded(true));
+    return data.objectIDs.sort();
   }
 );
