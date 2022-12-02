@@ -8,6 +8,8 @@ export type ObjectRecord = {
 };
 
 export type ObjectsState = {
+  isIdsArrLoaded: boolean;
+  isApiFetching: boolean;
   ids: number[];
   objects: ObjectRecord[];
 };
