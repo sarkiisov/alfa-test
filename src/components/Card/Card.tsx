@@ -2,7 +2,7 @@ import React from 'react';
 import {
   CardArtistBiography, CardWrapper, CardImage, CardControls, CardImageWrapper, CardInfoWrapper, CardTitle, CardIconButton, CardLikeButton
 } from './Card.styled';
-import { HeartIcon, XIcon } from '../../icons/components';
+import { HeartIcon, XIcon } from '../icons';
 import { ObjectRecord } from '../../types';
 
 export type CardProps = ObjectRecord & {

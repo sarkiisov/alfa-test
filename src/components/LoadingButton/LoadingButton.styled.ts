@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { DotsIcon } from '../../icons/components/DotsIcon';
+import { DotsIcon } from '../icons';
 
 export const LoadingButtonWrapper = styled.button<{
   isLoading: boolean;

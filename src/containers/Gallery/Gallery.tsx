@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '../../components/Card';
 import { LodaingButton } from '../../components/LoadingButton';
 import { Typography } from '../../components/Typography';
-import { HeartIcon } from '../../icons/components';
+import { HeartIcon } from '../../components/icons';
 import { setFilter } from '../../store/filter/reducer';
 import { filterSelectors } from '../../store/filter/selectors';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
