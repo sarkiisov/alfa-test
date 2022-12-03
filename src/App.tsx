@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Typography } from './components/Typography';
+import { Gallery } from './containers/Gallery';
+import { useAppDispatch } from './store/hooks';
+import { fetchObjectIds, fetchObjectRecords } from './store/objects/asyncActions';
+
+const Layout = styled.div`
+  box-sizing: content-box;
+  margin: 32px auto;
+  padding: 0px 16px;
+  max-width: 800px;
+`;
+
+const GalleryLoadingMessage = styled(Typography)`
+  padding: 32px 0px;
+  text-align: center;
+`;
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isGalleryLoaded, setIsGalleryLoaded] = useState(false);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchObjectIds())
+      .then(() => dispatch(fetchObjectRecords({ recordAmount: 6 })))
+      .then(() => setIsGalleryLoaded(true));
+  }, []);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Layout>
+      {
+        isGalleryLoaded
+          ? <Gallery />
+          : <GalleryLoadingMessage>Loading gallery...</GalleryLoadingMessage>
+      }
+    </Layout>
+  );
 }
 
-export default App
+export default App;
