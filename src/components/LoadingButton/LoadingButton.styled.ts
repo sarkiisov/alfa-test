@@ -5,7 +5,7 @@ export const LoadingButtonWrapper = styled.button<{
   isLoading: boolean;
 }>`
   min-width: 180px;
-  min-height: 40px;
+  min-height: 48px;
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.grey200};
   color: ${({ theme }) => theme.colors.grey800};
@@ -14,6 +14,10 @@ export const LoadingButtonWrapper = styled.button<{
 
   &:hover {
     cursor: ${({ isLoading }) => (isLoading ? 'default' : 'pointer')};
+  }
+
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.xs})  {
+    width: 100%;
   }
 `;
 
@@ -33,5 +37,5 @@ const pulse = keyframes`
 
 export const LoadingIcon = styled(DotsIcon)`
   animation: ${pulse} 2s ease infinite;
-  color: ${(props) => props.theme.colors.grey800}
+  color: ${(props) => props.theme.colors.grey800};
 `;
