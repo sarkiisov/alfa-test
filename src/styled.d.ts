@@ -5,5 +5,6 @@ declare module 'styled-components' {
     colors: Record<string, string>;
     fontSizes: Record<string, string>;
     durations: Record<string, number>;
+    breakpoints: Record<string, string>;
   }
 }

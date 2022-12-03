@@ -14,5 +14,10 @@ export const theme = {
   },
   durations: {
     ms200: 200
+  },
+  breakpoints: {
+    xs: '480px',
+    sm: '768px',
+    md: '1023px',
   }
 };
