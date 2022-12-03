@@ -14,7 +14,7 @@ export type TypographyProps = {
   children: React.ReactNode;
 };
 
-export const Typography: React.FC<TypographyProps> = ({ className, variant = 'h2', children }) => (
+export const Typography: React.FC<TypographyProps> = ({ className, variant = 'body1', children }) => (
   <DynamicTypography
     as={TypographyTagsMapping[variant] as keyof JSX.IntrinsicElements}
     variant={variant}
