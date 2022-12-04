@@ -15,7 +15,11 @@ import {
 } from './Gallery.styled';
 import { getGalleryHeaderText, isFilterOptionActive } from './helpers';
 
-export const Gallery: React.FC<{}> = () => {
+export type GalleryProps = {
+
+};
+
+export const Gallery: React.FC<GalleryProps> = () => {
   const dispatch = useAppDispatch();
   const objectRecords = useAppSelector(objectsSelectors.getFilteredLoadedObjects);
   const objectRecordsCount = useAppSelector(objectsSelectors.getObjectsCount);
