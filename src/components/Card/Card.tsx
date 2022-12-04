@@ -4,6 +4,7 @@ import {
 } from './Card.styled';
 import { HeartIcon, XIcon } from '../icons';
 import { ObjectRecord } from '../../types';
+import placeholderImage from '../../assets/placeholder.png';
 
 export type CardProps = ObjectRecord & {
   onRemoveClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
@@ -16,7 +17,7 @@ export const Card: React.FC<CardProps> = ({
   <CardWrapper>
     <CardImageWrapper>
       <CardImage
-        src={primaryImageSmall}
+        src={primaryImageSmall || placeholderImage}
         loading="lazy"
         draggable={false}
       />
@@ -32,9 +33,7 @@ export const Card: React.FC<CardProps> = ({
     <CardInfoWrapper>
       <CardTitle variant="h3" maxLines={2}>{title}</CardTitle>
       <CardArtistBiography maxLines={3} variant="body1">
-        {artistDisplayName}
-        {' '}
-        {artistDisplayBio}
+        {`${artistDisplayName} (${artistDisplayBio})`}
       </CardArtistBiography>
     </CardInfoWrapper>
   </CardWrapper>
